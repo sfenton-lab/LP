@@ -1,194 +1,47 @@
-(function (ns) {
+<!DOCTYPE html>
+<html>
+<head>
+    <title>structured content widget</title>
+    <script src="https://lpcdn.lpsnmedia.net/webagent/client-SDK.min.js"></script>
+    <link href="styles/styles.css" rel="stylesheet">
+</head>
 
-    var cards = {
-        
-        Master_Socket_Selection: {
-            title: "Master socket selection",
-            content: {
-                "type": "carousel",
-                "padding": 10,
-                "elements": [
-                  {
-                    "type": "vertical",
-                    "elements": [
-                      {
-                        "type": "image",
-                        "url": "https://community.talktalk.co.uk/t5/image/serverpage/image-id/57412i814771E273521AC2/image-size/small",
-                        "tooltip": "NTE5",
-                        "alt": "",
-                        "click": {
-                          "metadata": [
-                            {
-                              "type": "ExternalId",
-                              "id": "11114444"
-                            }
-                          ]
-                        }
-                      },
-                      
-                    {
-                        "type": "button",
-                        "tooltip": "NTE5",
-                        "title": "NTE5",
-                        "click": {
-                          "actions": [
-                             {
-                                "type": "publishText",
-                                "text": "NTE5"
-                              }
-                          ]
-                        }
-                      }
-                    ]
-                  },
-                  {
-                    "type": "vertical",
-                    "elements": [
-                      {
-                        "type": "image",
-                        "url": "https://community.talktalk.co.uk/t5/image/serverpage/image-id/57407i8C4ED95378245466/image-size/small",
-                        "tooltip": "FTTC",
-                        "alt": "",
-                        "click": {
-                          "metadata": [
-                            {
-                              "type": "ExternalId",
-                              "id": "11114444"
-                            }
-                          ]
-                        }
-                      },
-                      
-                    {
-                        "type": "button",
-                        "tooltip": "FTTC",
-                        "title": "FTTC",
-                        "click": {
-                          "actions": [
-                             {
-                                "type": "publishText",
-                                "text": "FTTC"
-                              }
-                          ]
-                        }
-                      }
-                    ]
-                  },
-                  {
-                    "type": "vertical",
-                    "elements": [
-                      {
-                        "type": "image",
-                        "url": "https://community.talktalk.co.uk/t5/image/serverpage/image-id/57413i84EFC5F763F7F682/image-size/small",
-                        "tooltip": "NTE2000",
-                        "alt": "",
-                        "click": {
-                          "metadata": [
-                            {
-                              "type": "ExternalId",
-                              "id": "11114444"
-                            }
-                          ]
-                        }
-                      },
-                      
-                    {
-                        "type": "button",
-                        "tooltip": "NTE2000",
-                        "title": "NTE2000",
-                        "click": {
-                          "actions": [
-                             {
-                                "type": "publishText",
-                                "text": "NTE2000"
-                              }
-                          ]
-                        }
-                      }
-                    ]
-                  },
-                  {
-                    "type": "vertical",
-                    "elements": [
-                      {
-                        "type": "image",
-                        "url": "https://community.talktalk.co.uk/t5/image/serverpage/image-id/57409i4D74004042399167/image-size/small",
-                        "tooltip": "NTE5c",
-                        "alt": "",
-                        "click": {
-                          "metadata": [
-                            {
-                              "type": "ExternalId",
-                              "id": "11114444"
-                            }
-                          ]
-                        }
-                      },
-                      
-                    {
-                        "type": "button",
-                        "tooltip": "NTE5c",
-                        "title": "NTE5c",
-                        "click": {
-                          "actions": [
-                             {
-                                "type": "publishText",
-                                "text": "NTE5c"
-                              }
-                          ]
-                        }
-                      }
-                    ]
-                  },
-                  {
-                    "type": "vertical",
-                    "elements": [
-                      {
-                        "type": "image",
-                        "url": "https://community.talktalk.co.uk/t5/image/serverpage/image-id/57414i1CC4AD28DD91802E/image-size/small",
-                        "tooltip": "NTE5c mk4",
-                        "alt": "",
-                        "click": {
-                          "metadata": [
-                            {
-                              "type": "ExternalId",
-                              "id": "11114444"
-                            }
-                          ]
-                        }
-                      },
-                      
-                    {
-                        "type": "button",
-                        "tooltip": "NTE5c mk4",
-                        "title": "NTE5c mk4",
-                        "click": {
-                          "actions": [
-                             {
-                                "type": "publishText",
-                                "text": "NTE5c mk4"
-                              }
-                          ]
-                        }
-                      }
-                    ]
-                  }
-                ]
-              }
-        }
-    };
+<body>
 
-    var metadata = [
-    {
-        "type": "ExternalId",
-        "id": "123456789"
-    }
-    ];
+<div id="fontResize">
+    <button id="decreaseFontSizeBtn" title="decrease font size">-</button>
+    <button id="increaseFontSizeBtn" title="increase font size">+</button>
+</div>
+
+<h1>structured content</h1>
+
+<label for="jsonInput">
+    <span>json</span>
+    <button id="addCardBtn">Select Card &#x25BC;</button>
+    <div id="cardOptions" style="visibility: hidden;" tabindex="0">        
+    </div>
+</label>
+<textarea id="jsonInput" placeholder="enter the structured content json object here"></textarea>
+<label for="metadataInput">
+    <span>metadata</span>
+    <button id="addMetadataBtn">add sample data</button>
+</label>
+<textarea id="metadataInput" placeholder="enter the structured content metadata array here"></textarea>
+
+<label for="outputLog">
+    <span>response</span>
+    <button id="clearLogBtn">clear</button>
+</label>
+<textarea id="outputLog" readonly></textarea>
+
+<button id="sendBtn">send</button>
 
 
-    ns.data = {
-        cards: cards,
-        metadata: metadata
-    };
+<script src="lib/data.js"></script>
+<script src="lib/util.js"></script>
+<script src="lib/commands.js"></script>
+<script src="app.js"></script>
 
-})(window.structuredContentWidget = window.structuredContentWidget || {});
+</body>
+
+</html>
